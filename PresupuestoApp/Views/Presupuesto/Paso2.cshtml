@@ -1,0 +1,48 @@
+﻿@model PresupuestoApp.Models.PresupuestoViewModel
+
+<div class="center-container">
+    <h2>Paso 2 - Gastos Principales</h2>
+
+    <form asp-action="Paso2" method="post">
+        <div class="form-pair">
+            <div class="form-wrapper">
+                <label>Alquiler:</label>
+                <input asp-for="Alquiler" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Electricidad:</label>
+                <input asp-for="Electricidad" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Agua:</label>
+                <input asp-for="Agua" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Gas:</label>
+                <input asp-for="Gas" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Ayudante en el Hogar:</label>
+                <input asp-for="AyudanteHogar" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Colegio:</label>
+                <input asp-for="Colegio" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Despensa Fija:</label>
+                <input asp-for="DespensaFija" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Internet Hogar:</label>
+                <input asp-for="InternetHogar" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Teléfono:</label>
+                <input asp-for="Telefono" type="number" step="0.01" />
+            </div>
+        </div>
+        <a asp-action="Paso1" asp-controller="Presupuesto" class="btn btn-secondary">Anterior</a>
+        <button class="btn btn-secondary" type="submit">Siguiente</button>
+    </form>
+</div>

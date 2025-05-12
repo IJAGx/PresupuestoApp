@@ -1,0 +1,52 @@
+﻿@model PresupuestoApp.Models.PresupuestoViewModel
+
+<div class="center-container">
+    <h2>Paso 3 - Gastos Personales</h2>
+
+    <form asp-action="Paso3" method="post">
+        <div class="form-pair">
+            <div class="form-wrapper">
+                <label>Ahorros:</label>
+                <input asp-for="Ahorros" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Estudios Personales:</label>
+                <input asp-for="Estudios" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Salón/Peluquería:</label>
+                <input asp-for="Peluqueria" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Gimnasio:</label>
+                <input asp-for="Gimnasio" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                    <label>Transporte Laboral:</label>
+                    <input asp-for="TransporteLaboral" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Transporte Extra:</label>
+                <input asp-for="TransporteExtra" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Pago Vehículo:</label>
+                <input asp-for="PagoVehiculo" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Combustible:</label>
+                <input asp-for="Combustible" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Mesada a Padres:</label>
+                <input asp-for="MesadaPadres" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Mesada a Hijos:</label>
+                <input asp-for="MesadaHijos" type="number" step="0.01" />
+            </div>
+        </div>
+        <a asp-action="Paso2" asp-controller="Presupuesto" class="btn btn-secondary">Anterior </a>
+        <button class="btn btn-secondary" type="submit">Siguiente</button>
+    </form>
+</div>

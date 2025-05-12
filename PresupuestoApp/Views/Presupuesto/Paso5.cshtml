@@ -1,0 +1,28 @@
+﻿@model PresupuestoApp.Models.PresupuestoViewModel
+
+<div class="center-container">
+    <h2>Paso 5 - Entretenimiento</h2>
+
+    <form asp-action="Paso5" method="post">
+        <div class="form-pair">
+            <div class="form-wrapper">
+                <label>Streaming:</label>
+                <input asp-for="Streaming" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Salidas:</label>
+                <input asp-for="Salidas" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Restaurantes:</label>
+                <input asp-for="Restaurantes" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Despensa Extra:</label>
+                <input asp-for="DespensaExtra" type="number" step="0.01" />
+            </div>
+        </div>
+        <a asp-action="Paso4" asp-controller="Presupuesto" class="btn btn-secondary">Anterior</a>
+        <button class="btn btn-secondary" type="submit">Finalizar</button>
+    </form>
+</div>

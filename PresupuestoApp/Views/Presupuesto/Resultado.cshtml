@@ -1,0 +1,117 @@
+﻿@model PresupuestoApp.Models.PresupuestoViewModel
+
+@{
+    ViewData["Title"] = "Resumen Final del Presupuesto";
+}
+
+<h2>Resumen del Presupuesto Mensual Personal</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th colspan="2">Datos Generales</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Nombre/Nickname:</strong></td><td>@Model.NombreUsuario</td></tr>
+        <tr><td><strong>Ingreso Previsto (Total):</strong></td><td>@(Model.IngresoPrevistoPrincipal + Model.IngresoPrevistoAdicional) RD$</td></tr>
+        <tr><td><strong>Ingreso Real (Total):</strong></td><td>@(Model.IngresoRealPrincipal + Model.IngresoRealAdicional) RD$</td></tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead class="table-dark"><tr><th colspan="2">Gastos Principales</th></tr></thead>
+    <tbody>
+        <tr><td>Alquiler</td><td>@Model.Alquiler RD$</td></tr>
+        <tr><td>Electricidad</td><td>@Model.Electricidad RD$</td></tr>
+        <tr><td>Agua</td><td>@Model.Agua RD$</td></tr>
+        <tr><td>Gas</td><td>@Model.Gas RD$</td></tr>
+        <tr><td>Ayudante en el Hogar</td><td>@Model.AyudanteHogar RD$</td></tr>
+        <tr><td>Colegio</td><td>@Model.Colegio RD$</td></tr>
+        <tr><td>Despensa Fija</td><td>@Model.DespensaFija RD$</td></tr>
+        <tr><td>Internet</td><td>@Model.InternetHogar RD$</td></tr>
+        <tr><td>Teléfono</td><td>@Model.Telefono RD$</td></tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead class="table-dark"><tr><th colspan="2">Gastos Personales</th></tr></thead>
+    <tbody>
+        <tr><td>Ahorros</td><td>@Model.Ahorros RD$</td></tr>
+        <tr><td>Estudios</td><td>@Model.Estudios RD$</td></tr>
+        <tr><td>Salón / Peluquería</td><td>@Model.Peluqueria RD$</td></tr>
+        <tr><td>Gimnasio</td><td>@Model.Gimnasio RD$</td></tr>
+        <tr><td>Transporte Laboral</td><td>@Model.TransporteLaboral RD$</td></tr>
+        <tr><td>Transporte Extra</td><td>@Model.TransporteExtra RD$</td></tr>
+        <tr><td>Pago Vehículo</td><td>@Model.PagoVehiculo RD$</td></tr>
+        <tr><td>Combustible</td><td>@Model.Combustible RD$</td></tr>
+        <tr><td>Mesada a Padres</td><td>@Model.MesadaPadres RD$</td></tr>
+        <tr><td>Mesada a Hijo</td><td>@Model.MesadaHijos RD$</td></tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead class="table-dark"><tr><th colspan="2">Préstamos</th></tr></thead>
+    <tbody>
+        <tr><td>Préstamo Personal 1</td><td>@Model.Prestamo1 RD$</td></tr>
+        <tr><td>Préstamo Personal 2</td><td>@Model.Prestamo2 RD$</td></tr>
+        <tr><td>Préstamo Estudiantil</td><td>@Model.PrestamoEstudiantil RD$</td></tr>
+        <tr><td>Tarjeta de Crédito 1</td><td>@Model.TarjetaCredito1 RD$</td></tr>
+        <tr><td>Tarjeta de Crédito 2</td><td>@Model.TarjetaCredito2 RD$</td></tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead class="table-dark"><tr><th colspan="2">Entretenimiento / Gasto Extra</th></tr></thead>
+    <tbody>
+        <tr><td>Streaming</td><td>@Model.Streaming RD$</td></tr>
+        <tr><td>Salidas</td><td>@Model.Salidas RD$</td></tr>
+        <tr><td>Restaurantes</td><td>@Model.Restaurantes RD$</td></tr>
+        <tr><td>Despensa Extra</td><td>@Model.DespensaExtra RD$</td></tr>
+    </tbody>
+</table>
+
+<div class="mt-4">
+    <a asp-action="Paso5" asp-controller="Presupuesto" class="btn btn-secondary no-print">Anterior</a>
+    <a class="btn btn-success no-print" onclick="window.print()">Imprimir PDF</a>
+    @* <a class="btn btn-info no-print" asp-action="ExportarExcel">Exportar como Excel</a> *@
+</div>
+
+@{
+    var ingresoReal = Model.IngresoRealPrincipal + Model.IngresoRealAdicional;
+
+    var totalGastos =
+        Model.Alquiler + Model.Electricidad + Model.Agua + Model.Gas +
+        Model.AyudanteHogar + Model.Colegio + Model.DespensaFija + Model.InternetHogar + Model.Telefono +
+        Model.Ahorros + Model.Estudios + Model.Peluqueria + Model.Gimnasio + Model.TransporteLaboral +
+        Model.TransporteExtra + Model.PagoVehiculo + Model.Combustible + Model.MesadaPadres + Model.MesadaHijos +
+        Model.Prestamo1 + Model.Prestamo2 + Model.PrestamoEstudiantil +
+        Model.TarjetaCredito1 + Model.TarjetaCredito2 +
+        Model.Streaming + Model.Salidas + Model.Restaurantes + Model.DespensaExtra;
+
+    var restante = ingresoReal - totalGastos;
+    var porcentajeAhorros = ingresoReal > 0 ? (Model.Ahorros / ingresoReal) * 100 : 0;
+    var porcentajeDeuda = ingresoReal > 0 ? (
+        (Model.Prestamo1 + Model.Prestamo2 + Model.PrestamoEstudiantil + Model.TarjetaCredito1 + Model.TarjetaCredito2)
+        / ingresoReal) * 100 : 0;
+}
+
+
+<div class="alert @(restante >= 0 ? "alert-success" : "alert-danger") mt-4">
+    <h4>Análisis del Presupuesto</h4>
+    <p><strong>Total Ingreso Real:</strong> @ingresoReal RD$</p>
+    <p><strong>Total Gastos:</strong> @totalGastos RD$</p>
+    <p><strong>Diferencia:</strong> @restante RD$ (@(restante >= 0 ? "Superávit" : "Déficit"))</p>
+
+    <p><strong>Ahorros:</strong> @Model.Ahorros RD$ (@porcentajeAhorros.ToString("0.00")%)</p>
+    <p><strong>Deuda total sobre ingreso:</strong> @porcentajeDeuda.ToString("0.00")%</p>
+
+    @if (porcentajeAhorros < 10)
+    {
+        <p class="text-warning">⚠️ Se recomienda ahorrar al menos un 10% de tus ingresos.</p>
+    }
+    @if (porcentajeDeuda > 40)
+    {
+        <p class="text-danger">⚠️ Tus deudas superan el 40% de tus ingresos. Considera reducirlas.</p>
+    }
+</div>

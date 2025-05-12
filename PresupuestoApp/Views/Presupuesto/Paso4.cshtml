@@ -1,0 +1,32 @@
+﻿@model PresupuestoApp.Models.PresupuestoViewModel
+
+<div class="center-container">
+    <h2>Paso 4 - Préstamos</h2>
+
+    <form asp-action="Paso4" method="post">
+        <div class="form-pair">
+            <div class="form-wrapper">
+                <label>Préstamo Personal 1:</label>
+                <input asp-for="Prestamo1" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Préstamo Personal 2:</label>
+                <input asp-for="Prestamo2" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Préstamo Estudiantil:</label>
+                <input asp-for="PrestamoEstudiantil" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Tarjeta de Crédito 1:</label>
+                <input asp-for="TarjetaCredito1" type="number" step="0.01" />
+            </div>
+            <div class="form-wrapper">
+                <label>Tarjeta de Crédito 2:</label>
+                <input asp-for="TarjetaCredito2" type="number" step="0.01" />
+            </div>
+        </div>
+        <a asp-action="Paso3" asp-controller="Presupuesto" class="btn btn-secondary">Anterior</a>
+        <button class="btn btn-secondary" type="submit">Siguiente</button>
+    </form>
+</div>

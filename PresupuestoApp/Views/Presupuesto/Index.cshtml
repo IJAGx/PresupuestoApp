@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="center-container">
+    <h1>PresupuestoWeb</h1>
+    <h5> para ayudarte a organizar tus Gastos y Recomendarte soluciones</h5>
+
+    <form asp-action="Iniciar" method="post">
+        <div>
+            <div class="form-wrapper">
+                <label for="nombreUsuario">Nombre o Nickname:</label>
+            </div>
+            <div class="form-wrapper">
+                <input type="text" id="nombreUsuario" name="nombreUsuario" required />
+            </div>
+        </div>
+        <button type="submit">Iniciar Presupuesto</button>
+    </form>
+</div>
